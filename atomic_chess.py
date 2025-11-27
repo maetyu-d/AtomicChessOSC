@@ -17,7 +17,7 @@ INFO_BAR_HEIGHT = 100
 WINDOW_SIZE = (BOARD_PIXELS, BOARD_PIXELS + INFO_BAR_HEIGHT)
 FPS = 60
 
-# Colors – atomic neon vibe
+# Colours
 COLOUR_BG = (8, 4, 10)
 COLOUR_LIGHT = (255, 240, 120)   # atomic yellow
 COLOUR_DARK = (190, 40, 40)      # atomic red
@@ -842,7 +842,7 @@ class AtomicChessGame:
             self.send_game_over_osc("1/2-1/2", osc_reason + "_DRAW")
 
     # -------------------------
-    # Config save/load
+    # Configuration save/load
     # -------------------------
 
     def export_config(self):
@@ -1022,7 +1022,7 @@ class AtomicChessGame:
                 script_param,
             )
 
-        # Ensure standard archetypes exist at least
+        # Ensure standard archetypes exist at the minimum
         if "king" not in self.piece_types or "queen" not in self.piece_types:
             self.init_default_piece_types()
 
@@ -1203,7 +1203,7 @@ class AtomicChessGame:
         if mind > thresh:
             return
 
-        # choose one of the nearest edges (if ties, random)
+        # choose one of the nearest edges (if tied, choose one that is tied at random)
         nearest_edges = [e for e, d in dists.items() if d == mind]
         edge = random.choice(nearest_edges)
 
@@ -1322,7 +1322,7 @@ class AtomicChessGame:
                     self.add_dsl_message(f"{piece.color} {piece.type_name} left chunk '{name}' script zone.")
 
     # -------------------------
-    # DSL
+    # DSL stuff
     # -------------------------
 
     def add_dsl_message(self, text):
@@ -2006,7 +2006,7 @@ class AtomicChessGame:
         sub_surf = self.font_info.render(sub, True, COLOUR_TEXT_SUB)
         self.screen.blit(sub_surf, (20, BOARD_PIXELS + 36))
 
-        # DSL floating panel
+        # DSL panel
         if self.dsl_mode:
             panel_width = int(WINDOW_SIZE[0] * 0.85)
             panel_height = int(WINDOW_SIZE[1] * 0.7)
